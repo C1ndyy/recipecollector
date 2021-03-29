@@ -3,18 +3,19 @@
 <h1>Recipes</h1>
 <hr />
 
-{% for recipe in recipes %}
-
 <div class="card">
     <div class="card-content">
-        <div class="content">{{ recipe.name }}</div>
+        <div class="content">
+            {{ recipe.name }}
+            <p>rating: {{ recipe.rating}}</p>
+        </div>
     </div>
 
     <footer class="card-footer">
-        <a href="{{ recipe.link }}" class="card-footer-item">Go To Recipe</a>
-        <a href="/recipes/{{ recipe.id }}" class="card-footer-item">Details</a>
+        <a href="{{ recipe.link }}" class="card-footer-item">Go To</a>
+        <a href="#" class="card-footer-item">Edit</a>
         <a href="#" class="card-footer-item">Delete</a>
     </footer>
 </div>
 
-{% endfor %} {% endblock %}
+{% endblock %}

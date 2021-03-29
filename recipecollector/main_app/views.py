@@ -1,18 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse #<---- copy in
-
-class Recipe:
-    def __init__(self, name, category, link, rating):
-        self.name = name
-        self.category = category
-        self.link =link
-        self.rating =rating
-
-recipes = [
-    Recipe('Banana Bread', "Baking", "Link", 5),
-    Recipe('Spagetti', "Dinner", "Link", 4),
-    Recipe('Chili', "Dinner", "Link", 3),
-]
+from .models import Recipe
 
 
 # Create your views here.
@@ -23,4 +11,9 @@ def about(request):
     return render(request, 'about.html')
 
 def recipes_index(request):
+    recipes = Recipe.objects.all()
     return render(request, 'recipes/index.html', {'recipes': recipes })
+
+def recipe_details(request, recipe_id):
+    recipe = Recipe.objects.get(id=recipe_id)
+    return render(request, 'recipes/details.html', {'recipe': recipe})
