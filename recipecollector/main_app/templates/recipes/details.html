@@ -13,8 +13,8 @@
 
     <footer class="card-footer">
         <a href="{{ recipe.link }}" class="card-footer-item">Go To</a>
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
+        <a href="{% url 'recipe_update' recipe.id %}" class="card-footer-item">Edit</a>
+        <a href="{% url 'recipe_delete' recipe.id %}" class="card-footer-item">Delete</a>
     </footer>
 </div>
 
