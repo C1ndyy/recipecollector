@@ -1,0 +1,34 @@
+#card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  margin: 20px;
+}
+
+.card-content {
+  height: 150px;
+}
+
+h1 button {
+  margin: 10px;
+}
+
+#new-recipe-form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20%;
+  align-items: center;
+}
+#new-recipe-form input {
+  height: 40px;
+  width: 100%;
+}
+
+#new-recipe-form input[type="submit"] {
+  margin: 20px;
+  width: 100px;
+}

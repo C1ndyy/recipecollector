@@ -1,20 +1,23 @@
 {% extends 'base.html' %} {% block title %} Recipes {% endblock %}
 {% block content %}
-<h1>Recipes</h1>
+<h1 class="title is-1">Recipes</h1>
 <hr />
 
-{% for recipe in recipes %}
 
-<div class="card">
-    <div class="card-content">
-        <div class="content">{{ recipe.name }}</div>
+
+<div id="card-container">
+    {% for recipe in recipes %}
+    <div class="card">
+        <div class="card-content">
+            <div class="content title is-4">{{ recipe.name }}</div>
+        </div>
+
+        <footer class="card-footer">
+            <a href="{{ recipe.link }}" class="card-footer-item">Go To Recipe</a>
+            <a href="/recipes/{{ recipe.id }}" class="card-footer-item">Details</a>
+            <a href="{% url 'recipe_delete' recipe.id %}" class="card-footer-item">Delete</a>
+        </footer>
     </div>
-
-    <footer class="card-footer">
-        <a href="{{ recipe.link }}" class="card-footer-item">Go To Recipe</a>
-        <a href="/recipes/{{ recipe.id }}" class="card-footer-item">Details</a>
-        <a href="{% url 'recipe_delete' recipe.id %}" class="card-footer-item">Delete</a>
-    </footer>
+    {% endfor %}
 </div>
-
-{% endfor %} {% endblock %}
+{% endblock %}
