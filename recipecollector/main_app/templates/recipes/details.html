@@ -10,6 +10,35 @@
     class="button is-danger">Delete</button>
 <hr />
 
+
+<h2 class="title is-2">Required Kitchen Tools</h2>
+{% if recipe.tools.count %}
+{% for tool in recipe.tools.all %}
+<div class="box">
+    {{ tool.name }}
+    size: {{ tool.size }}
+</div>
+{% endfor %}
+{% else %}
+<h5>No Tools required</h5>
+{% endif %}
+<h2 class="title is-5">Add Tools</h2>
+<form action="{% url 'assoc_tool' recipe.id %}" method="post">
+    {% csrf_token %}
+    <div class="select">
+        <select name="id">
+            {% for tool in all_tools.all %}
+            <option value="{{ tool.id}}">{{ tool.name }} - {{ tool.size }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="button is-primary">Add Tool</button>
+</form>
+
+
+
+
+
 <h2 class="title is-2">Notes</h2>
 {% for note in recipe.note_set.all %}
 
@@ -34,6 +63,10 @@
 </article>
 <br>
 {% endfor %}
+
+
+
+
 <form action="{% url 'add_note' recipe.id %}" method="post">
     {% csrf_token %}
     <article class="media">

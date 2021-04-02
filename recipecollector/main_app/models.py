@@ -4,6 +4,14 @@ from django.urls import reverse
 # Create your models here
 
 RATINGS = ((1,1),(2,2),(3,3),(4,4),(5,5))
+
+class Tool(models.Model):
+    name = models.CharField(max_length=50)
+    size = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+        
 class Recipe(models.Model):
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
@@ -12,6 +20,7 @@ class Recipe(models.Model):
         choices=RATINGS,
         default=RATINGS[0]
     )
+    tools = models.ManyToManyField(Tool)
 
     def __str__(self):
         return self.name
@@ -27,3 +36,4 @@ class Note(models.Model):
 
     def __str__(self):
         return self.note
+
